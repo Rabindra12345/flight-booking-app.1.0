@@ -1,6 +1,7 @@
 package com.baldur.flight_booking.controller;
 
 
+import com.baldur.flight_booking.constants.ApiResponse;
 import com.baldur.flight_booking.constants.ErrorCode;
 import com.baldur.flight_booking.model.Airline;
 import com.baldur.flight_booking.model.Seat;
@@ -28,7 +29,9 @@ public class AirLineController {
     public ResponseEntity<?> addAirlines(@PathVariable("airlineName") String airLineName){
 
         Airline airline = airLineService.addAirlines(airLineName);
-        return ResponseEntity.ok(ErrorCode.OK.getStatusCode());
+//        return ResponseEntity.ok(ErrorCode.OK.getStatusCode());
+
+        return ResponseEntity.ok(ApiResponse.forSuccess(ErrorCode.OK.getStatusCode(),airline));
 
     }
     //get all airlines
@@ -36,8 +39,8 @@ public class AirLineController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> addSeatDetails(@RequestBody Seat seatInfo){
         airLineService.addSeatInfo(seatInfo);
-        return ResponseEntity.ok(ErrorCode.OK.getStatusCode());
-
+//        return ResponseEntity.ok(ErrorCode.OK.getStatusCode());
+        return ResponseEntity.ok(ApiResponse.forSuccessWithoutBody(ErrorCode.OK.getStatusCode()));
     }
 
 }

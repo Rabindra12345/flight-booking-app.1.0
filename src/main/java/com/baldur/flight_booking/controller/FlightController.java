@@ -1,5 +1,6 @@
 package com.baldur.flight_booking.controller;
 
+import com.baldur.flight_booking.constants.ApiResponse;
 import com.baldur.flight_booking.constants.ErrorCode;
 import com.baldur.flight_booking.model.ERole;
 import com.baldur.flight_booking.payload.request.FlightRequestDto;
@@ -35,7 +36,8 @@ public class FlightController {
     public ResponseEntity<?> saveFlight(@PathVariable("userId")String userId, @PathVariable("airLineId") String airLineId, @RequestBody FlightRequestDto request) {
 
         request = flightService.saveFlight(userId,airLineId,request);
-        return ResponseEntity.ok((request));
+//        return ResponseEntity.ok("request");
+        return ResponseEntity.ok(ApiResponse.forSuccess(ErrorCode.OK.getStatusCode(), request));
     }
 
     //add new airport functionality to admin if he is admin
@@ -48,6 +50,6 @@ public class FlightController {
     public ResponseEntity<?> updateFlight(@RequestBody FlightRequestDto flightEditRequest) {
         flightEditRequest = flightService.updateFlight(flightEditRequest);
 //        ERole eRole =ERole.ROLE_ADMIN;
-        return ResponseEntity.ok(ErrorCode.OK.getStatusCode());
+        return ResponseEntity.ok(ApiResponse.forSuccess(ErrorCode.OK.getStatusCode(), flightEditRequest));
     }
 }
