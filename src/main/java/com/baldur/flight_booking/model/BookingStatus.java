@@ -2,7 +2,7 @@ package com.baldur.flight_booking.model;
 
 public enum BookingStatus {
 
-//    BOOKED,
+    BOOKED,
     CANCELLED,
     PENDING,
     COMPLETED

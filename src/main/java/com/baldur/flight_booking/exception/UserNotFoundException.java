@@ -6,9 +6,9 @@ public class UserNotFoundException extends RuntimeException{
 
     private String errorDescription;
 
-    private String errorCode;
+    private int errorCode;
 
-    public UserNotFoundException(String message, String errorDescription, String errorCode) {
+    public UserNotFoundException(String message, String errorDescription, int errorCode) {
         this.message = message;
         this.errorDescription = errorDescription;
         this.errorCode = errorCode;
