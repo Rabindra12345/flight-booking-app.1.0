@@ -12,7 +12,7 @@ import lombok.Data;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+//@Data
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class UserRequestDto {
 
@@ -24,8 +24,39 @@ public class UserRequestDto {
 
     private String passportNumOrNid;
 
+    public UserRequestDto() {
+    }
+
+    public UserRequestDto(Long id, String username, String email, String passportNumOrNid, String password, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.passportNumOrNid = passportNumOrNid;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "UserRequestDto{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", passportNumOrNid='" + passportNumOrNid + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
+
     private String password;
 
     private Set<Role> roles = new HashSet<>();
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

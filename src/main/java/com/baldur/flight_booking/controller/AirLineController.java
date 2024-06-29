@@ -3,6 +3,7 @@ package com.baldur.flight_booking.controller;
 
 import com.baldur.flight_booking.constants.ApiResponse;
 import com.baldur.flight_booking.constants.ErrorCode;
+import com.baldur.flight_booking.model.Aircraft;
 import com.baldur.flight_booking.model.Airline;
 import com.baldur.flight_booking.model.Seat;
 import com.baldur.flight_booking.service.AirLineService;
@@ -24,6 +25,9 @@ public class AirLineController {
     @Autowired
     private AirLineService airLineService;
 
+
+    //THESE THINGS ARE FOR AIRLINE ADMIN ONLY ...
+
     @PostMapping(value="/createAirline/{airlineName}",produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> addAirlines(@PathVariable("airlineName") String airLineName){
@@ -41,6 +45,16 @@ public class AirLineController {
         airLineService.addSeatInfo(seatInfo);
 //        return ResponseEntity.ok(ErrorCode.OK.getStatusCode());
         return ResponseEntity.ok(ApiResponse.forSuccessWithoutBody(ErrorCode.OK.getStatusCode()));
+    }
+
+    @PostMapping(value="/addAirCrafts/{airlineName}/{aircraftName}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public ResponseEntity<?> addAirCrafts(@PathVariable("airlineName")  String airlineName,@PathVariable("aircraftName") String aircraftName){
+
+        Aircraft aircraft = airLineService.addAirCraft(airlineName, aircraftName);
+//        return ResponseEntity.ok(ErrorCode.OK.getStatusCode());
+        return ResponseEntity.ok(ApiResponse.forSuccess(ErrorCode.OK.getStatusCode(),aircraft));
+
     }
 
 }

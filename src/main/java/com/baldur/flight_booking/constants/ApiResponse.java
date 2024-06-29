@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 //@NoArgsConstructor
 public class ApiResponse <T> {
 
@@ -17,6 +17,38 @@ public class ApiResponse <T> {
     private int errorCode;
 
     T body;
+
+    public int getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getErrorDescription() {
+        return errorDescription;
+    }
+
+    public void setErrorDescription(String errorDescription) {
+        this.errorDescription = errorDescription;
+    }
+
+    public T getBody() {
+        return body;
+    }
+
+    public void setBody(T body) {
+        this.body = body;
+    }
 
     private ApiResponse( ) {
 //        this.message = message;

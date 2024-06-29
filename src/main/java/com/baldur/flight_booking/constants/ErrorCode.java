@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 
-@Getter
+//@Getter
 public enum ErrorCode {
 
     OK(0,"OK", HttpStatus.OK ),
@@ -22,5 +22,17 @@ public enum ErrorCode {
         this.statusCode = statusCode;
         this.message = message;
         this.httpStatus = httpStatus;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
     }
 }

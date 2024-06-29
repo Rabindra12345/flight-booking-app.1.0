@@ -33,7 +33,8 @@ public class SecurityConfig {
             "swagger-ui/**",
             "/swagger-resources/**",
             "/swagger-resources",
-            "/v3/api-docs/**"
+            "/v3/api-docs/**",
+            "/getFlights"
     };
 
     @Bean
@@ -71,7 +72,7 @@ public class SecurityConfig {
 //                        auth.requestMatchers("/api/auth/**","/swagger-ui/**").permitAll()
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers(
-                                        "/api/auth/**"
+                                        "/api/auth/**","/initiatePayment","/paymentSuccess","/paymentFailure"
                                 ).permitAll()
                                 .requestMatchers(SWAGGER_WHITELIST_URLS).permitAll()
                                 .requestMatchers("/api/test/**").permitAll()

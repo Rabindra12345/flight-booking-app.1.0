@@ -14,8 +14,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@NoArgsConstructor
+//@Data
+//@NoArgsConstructor
 //@AllArgsConstructor
 @Table(name = "users",
         uniqueConstraints = {
@@ -57,7 +57,58 @@ public class User {
         this.password = password;
     }
 
-//    public Long getId() {
+    public User() {
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public @NotBlank @Size(max = 120) String getPassword() {
+        return password;
+    }
+
+    public void setPassword(@NotBlank @Size(max = 120) String password) {
+        this.password = password;
+    }
+
+    public @NotNull @NotBlank String getPassportNumOrNid() {
+        return passportNumOrNid;
+    }
+
+    public void setPassportNumOrNid(@NotNull @NotBlank String passportNumOrNid) {
+        this.passportNumOrNid = passportNumOrNid;
+    }
+
+    public @NotBlank @Size(max = 50) @Email String getEmail() {
+        return email;
+    }
+
+    public void setEmail(@NotBlank @Size(max = 50) @Email String email) {
+        this.email = email;
+    }
+
+    public @NotBlank @Size(max = 20) String getUsername() {
+        return username;
+    }
+
+    public void setUsername(@NotBlank @Size(max = 20) String username) {
+        this.username = username;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    //    public Long getId() {
 //        return id;
 //    }
 //
